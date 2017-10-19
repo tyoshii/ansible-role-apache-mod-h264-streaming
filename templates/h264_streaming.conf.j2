@@ -1,0 +1,5 @@
+# {{ ansible_managed }}
+# http://h264.code-shop.com/trac/wiki/Mod-H264-Streaming-Apache-Version2
+
+LoadModule h264_streaming_module modules/mod_h264_streaming.so
+AddHandler h264-streaming.extensions {{ h264_streaming_extensions | join(' ') }}
