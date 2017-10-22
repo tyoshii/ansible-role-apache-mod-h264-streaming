@@ -9,15 +9,23 @@
 
 - name: Download apache_mod_h264_streaming.tar.gz.
   get_url: url=http://h264.code-shop.com/download/apache_mod_h264_streaming-2.2.7.tar.gz dest=/usr/local/src/apache_mod_h264_streaming-2.2.7.tar.gz
+  become: yes
+  become_user: root
 
 - name: Unarchived tar.gz.
   command: tar zxvf /usr/local/src/apache_mod_h264_streaming-2.2.7.tar.gz chdir=/usr/local/src/
+  become: yes
+  become_user: root
 
 - name: Configure.
   command: ./configure --with-apxs=/usr/sbin/apxs chdir=/usr/local/src/mod_h264_streaming-2.2.7/ creates=/usr/lib64/httpd/modules/mod_h264_streaming.so
+  become: yes
+  become_user: root
 
 - name: Make.
   command: make chdir=/usr/local/src/mod_h264_streaming-2.2.7/ creates=/usr/lib64/httpd/modules/mod_h264_streaming.so
+  become: yes
+  become_user: root
 
 - name: Make install.
   command: make install chdir=/usr/local/src/mod_h264_streaming-2.2.7/ creates=/usr/lib64/httpd/modules/mod_h264_streaming.so
